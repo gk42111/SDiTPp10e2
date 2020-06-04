@@ -6,7 +6,16 @@ using namespace std;
 int main() {
 	ArrayQeueu<int> MojaKolejka;
 	MojaKolejka.enqueue(1);
-	cout << MojaKolejka.dequeue();
+	MojaKolejka.enqueue(2);
+	MojaKolejka.enqueue(3);
+
+	cout<<MojaKolejka.dequeue()<<endl;
+	cout << MojaKolejka.dequeue() << endl;
+	cout << MojaKolejka.dequeue() << endl;
+	cout << MojaKolejka.dequeue() << endl;
+
+
+
 	system("pause");
 	return 0;
 }

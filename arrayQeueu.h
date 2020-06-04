@@ -47,5 +47,17 @@ inline void ArrayQeueu<T>::enqueue(T el)
 template<class T>
 inline T ArrayQeueu<T>::dequeue()
 {
-	return Storage[First];
+	T smth = 0;
+	if (!isEmpty()) {
+		if (First == Last+1) {
+			std::cout << "Kolejka opró¿niona";
+		}
+		else 
+		{
+			smth = Storage[First];
+			First++; 
+		}
+	}
+	else std::cout << "Kolejka jest pusta!" << std::endl;
+	return smth;
 }
