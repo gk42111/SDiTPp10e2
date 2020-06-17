@@ -1,14 +1,16 @@
-#pragma once
-template <class T>
-class ArrayQeueu
+﻿#pragma once
+template <class T, int modyfikalnyRozmiarBuforu> class ArrayQueue
 {
 public:
 	//pola
-	T Storage[100];
+	T Storage[modyfikalnyRozmiarBuforu];
 	int First, Last;
 	//konstruktor
-	ArrayQeueu() { First = Last = -1; }
-	//metody:
+	ArrayQueue()
+	{
+		First = Last = -1;
+	}
+	//metody://
 	bool isEmpty()
 	{
 		if (First == -1) return true;
@@ -16,20 +18,20 @@ public:
 	}
 	bool isFull()
 	{
-		if ((First == 0 && Last == 100 - 1) || Last == First - 1)
+		if ((First == 0 && Last == modyfikalnyRozmiarBuforu - 1) || Last == First - 1)
 			return true;
 		else
 			return false;
 	}
 	void enqueue(T el);
 	T dequeue();
-};
-template<class T>
-inline void ArrayQeueu<T>::enqueue(T el)
+};
+template<class T, int modyfikalnyRozmiarBuforu>
+inline void ArrayQueue<T, modyfikalnyRozmiarBuforu>::enqueue(T el)
 {
 	if (!isFull())
 	{
-		if (Last == 100 - 1 || Last == -1)
+		if (Last == modyfikalnyRozmiarBuforu - 1 || Last == -1)
 		{
 			Storage[0] = el;
 			Last = 0;
@@ -41,23 +43,27 @@ inline void ArrayQeueu<T>::enqueue(T el)
 		else Storage[++Last] = el;
 	}
 	else
-		std::cout << "Kolejka jest pe�na!" << std::endl;
+		std::cout << "Kolejka jest pełna!" << std::endl;
 }
 
-template<class T>
-inline T ArrayQeueu<T>::dequeue()
+template<class T, int modyfikalnyRozmiarBuforu>
+inline T ArrayQueue<T, modyfikalnyRozmiarBuforu>::dequeue()
 {
 	T smth = 0;
 	if (!isEmpty()) {
-		if (First == Last+1) {
-			std::cout << "Kolejka opr�niona";
+		if (First == Last + 1) {
+			std::cout << "Kolejka opróżniona";
 		}
-		else 
+		else
 		{
 			smth = Storage[First];
-			First++; 
+			First++;
+			if ((First == 0 && Last == modyfikalnyRozmiarBuforu - 1) || Last == First - 1)
+				First = Last = -1;
 		}
 	}
-	else std::cout << "Kolejka jest pusta!" << std::endl;
-	return smth;
+	else {
+		std::cout << "Kolejka jest pusta!" << std::endl;
+	}
+	return smth; 
 }

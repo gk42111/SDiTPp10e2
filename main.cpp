@@ -4,16 +4,19 @@
 using namespace std;
 
 int main() {
-	ArrayQeueu<int> MojaKolejka;
+	ArrayQueue<int,5> MojaKolejka;
 	MojaKolejka.enqueue(1);
 	MojaKolejka.enqueue(2);
 	MojaKolejka.enqueue(3);
 
-	cout<<MojaKolejka.dequeue()<<endl;
+	cout<< MojaKolejka.dequeue()<<endl;
 	cout << MojaKolejka.dequeue() << endl;
 	cout << MojaKolejka.dequeue() << endl;
 	cout << MojaKolejka.dequeue() << endl;
 
+	MojaKolejka.enqueue(4);
+	cout << MojaKolejka.dequeue() << endl;
+	cout << MojaKolejka.dequeue() << endl;
 
 
 	system("pause");
